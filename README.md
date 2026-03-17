@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# ✈️ AeroTracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time flight tracking web application built with React, TypeScript, and Leaflet. Enter any address or use your current location to scan the skies above for active aircraft within a configurable radius.
 
-Currently, two official plugins are available:
+![AeroTracker Screenshot](public/screenshot1.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- 🗺️ **Interactive Dark Map** — Smooth Leaflet map with CARTO dark tiles
+- 📍 **Location Search** — Enter any address or use GPS to set your tracking center
+- 🔄 **Real-time Polling** — Flight data refreshes every 15 seconds via adsb.lol API
+- ✈️ **Flight Trails** — Historical and live polyline paths for each aircraft
+- 🛫 **Route Info** — Origin/destination airports with departure & arrival times
+- 🎯 **Bidirectional Selection** — Click a plane on the map or a card in the sidebar to highlight both, pan the map, and scroll the list
+- 📡 **Adjustable Radius** — Slide to scan anywhere from 10 km to 250 km
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/) — fast dev server & bundler
+- [Leaflet](https://leafletjs.com/) + [react-leaflet](https://react-leaflet.js.org/) — interactive maps
+- [Lucide React](https://lucide.dev/) — icons
+- [adsb.lol](https://adsb.lol/) — free ADS-B flight data API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Install dependencies
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
