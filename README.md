@@ -8,11 +8,12 @@ A real-time flight tracking web application built with React, TypeScript, and Le
 
 - 🗺️ **Interactive Dark Map** — Smooth Leaflet map with CARTO dark tiles
 - 📍 **Location Search** — Enter any address or use GPS to set your tracking center
-- 🔄 **Real-time Polling** — Flight data refreshes every 15 seconds via adsb.lol API
+- 🔄 **Real-time Polling** — Flight data refreshes every 30 seconds while the page is visible
 - ✈️ **Flight Trails** — Historical and live polyline paths for each aircraft
-- 🛫 **Route Info** — Origin/destination airports with departure & arrival times
-- 🎯 **Bidirectional Selection** — Click a plane on the map or a card in the sidebar to highlight both, pan the map, and scroll the list
-- 📡 **Adjustable Radius** — Slide to scan anywhere from 10 km to 250 km
+- 🛫 **Route Info** — Available origin, destination, and airline metadata
+- 🎯 **Bidirectional Selection** — Select a plane from the map or flight list
+- 📡 **Adjustable Radius** — Scan anywhere from 10 km to 200 km
+- 📱 **Responsive UI** — Desktop split view and touch-friendly stacked mobile layout
 
 ## Tech Stack
 
@@ -34,8 +35,28 @@ npm run dev
 
 Then open [http://localhost:5173](http://localhost:5173) in your browser.
 
+## Project Structure
+
+The frontend uses a feature-first architecture:
+
+```text
+src/
+  app/                         application composition
+  assets/                      bundled static assets
+  features/flights/
+    api/                       external API adapters and runtime parsing
+    components/                flight UI and map components
+    hooks/                     feature orchestration and polling state
+    model/                     domain types
+  styles/                      global design system and responsive layout
+```
+
+The Cloudflare Worker and Vite development server expose matching same-origin proxy routes for
+flight, route, track, and geocoding APIs.
+
 ## Build for Production
 
 ```bash
+npm run lint
 npm run build
 ```

@@ -16,6 +16,19 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/route-api/, ''),
       },
+      '/opensky-api': {
+        target: 'https://opensky-network.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/opensky-api/, ''),
+      },
+      '/geocode-api': {
+        target: 'https://nominatim.openstreetmap.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/geocode-api/, ''),
+        headers: {
+          'User-Agent': 'AeroTracker/1.0',
+        },
+      },
     }
   }
 })
